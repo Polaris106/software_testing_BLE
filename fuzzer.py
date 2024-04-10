@@ -32,18 +32,18 @@ def main():
             subprocess.run(["./mutate", os.path.join(INPUT_DIR, "test_input.txt"),
                            os.path.join(OUTPUT_DIR, "test_output.txt")], check=True)
 
-            # Read the contents of the output file and print them
-            with open(os.path.join(OUTPUT_DIR, "test_output.txt"), "r") as output_file:
-                output_data = output_file.read()
-                print("Contents of output file:")
-                print(output_data)
+            # Check if the output file is empty
+            output_file_path = os.path.join(OUTPUT_DIR, "test_output.txt")
+            if os.stat(output_file_path).st_size == 0:
+                print("Output file is empty.")
+                return
+            else:
+                # Read the contents of the output file and print them
+                with open(output_file_path, "r") as output_file:
+                    output_data = output_file.read()
+                    print("Contents of output file:")
+                    print(output_data)
 
-            # Fuzzing logic goes here
-            # For demonstration, let's just print the input data
-            print("Fuzzing iteration completed.")
-
-            # Clear the alarm (just in case)
-            signal.alarm(0)
         except Exception as e:
             print("Error occurred:", e)
             break
