@@ -5,6 +5,8 @@
 
 #include "mutate.h"
 
+int arrlen = 1;
+
 //Parses string of unknown number of integers separated by commas, storing them in provided array and returns length of array
 int parse(char* str, int* arr){
     char *token;
@@ -13,10 +15,10 @@ int parse(char* str, int* arr){
     token = strtok(str, ",");
     while (token != NULL) {
         len++;
-        arr = (int*)realloc(arr, (len)*sizeof(int));
         arr[len-1] = atoi(token);
         token = strtok(NULL, ",");
     }
+    arr[len] = -1;
     return len;
 }
 
@@ -35,7 +37,6 @@ int arrToStr(int* arr, char* str, int arrlen){
                 digits++;
             }
         }
-        str = (char*)realloc(str, (len+digits+1)*sizeof(char));
         num = arr[i];
         for(int j = 0; j < digits; j++){
             str[len+digits-j-1] = (num % 10) + '0';
@@ -52,15 +53,18 @@ int arrToStr(int* arr, char* str, int arrlen){
     return len;
 }
 
-void mutate(int* arr, int arrlen){
+void mutate(int* arr){
     int i;
     int pos;
     int val;
     switch (random() % 5){
         case 0:
             //Add a random integer to the array in a random position
+            if (arrlen == MAX_VAL - 1) {
+                mutate(arr);
+                return;
+            };
             arrlen++;
-            arr = (int*)realloc(arr, arrlen*sizeof(int));
             pos = random() % arrlen;
             val = random() % MAX_VAL;
             for(i = arrlen-1; i > pos; i--){
@@ -71,7 +75,7 @@ void mutate(int* arr, int arrlen){
         case 1:
             //Remove a random integer from the array
             if (arrlen == 1) {
-                mutate(arr, arrlen);
+                mutate(arr);
                 return;
             };
             pos = random() % arrlen;
@@ -79,13 +83,12 @@ void mutate(int* arr, int arrlen){
                 arr[i] = arr[i+1];
             }
             arrlen--;
-            arr = (int*)realloc(arr, arrlen*sizeof(int));
             break;
         case 2:
             //Increment a random integer in the array
             pos = random() % arrlen;
             if (arr[pos] == MAX_VAL) {
-                mutate(arr, arrlen);
+                mutate(arr);
                 return;
             };
             arr[pos]++;
@@ -94,7 +97,7 @@ void mutate(int* arr, int arrlen){
             //Decrement a random integer in the array
             pos = random() % arrlen;
             if (arr[pos] == 0) {
-                mutate(arr, arrlen);
+                mutate(arr);
                 return;
             };
             arr[pos]--;
@@ -108,6 +111,7 @@ void mutate(int* arr, int arrlen){
 }
 
 int main(int argc, char **argv) {
+    int i;
     srandom(time(NULL));
 
     if(argc < 3){
@@ -127,12 +131,13 @@ int main(int argc, char **argv) {
 
     char* line = (char*)malloc(256*sizeof(char));
     while(fgets(line, 256, file) != NULL){
-        int* arr = (int*)malloc(sizeof(int));
-        int arrlen = parse(line, arr);
+        int* arr = (int*)malloc(MAX_VAL * sizeof(int));
+        arrlen = parse(line, arr);
 
-        mutate(arr, arrlen);
-
-        char* newLine = (char*)malloc(sizeof(char));
+        for (i = 0; i < FIXED_ENERGY; i++) {
+            mutate(arr);
+        }
+        char* newLine = (char*)malloc(MAX_VAL * 4 *sizeof(char));
         arrToStr(arr, newLine, arrlen);
         fprintf(outFile, "%s\n", newLine);
 
