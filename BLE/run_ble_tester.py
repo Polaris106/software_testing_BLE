@@ -8,7 +8,6 @@ import sys
 import os
 import signal
 import subprocess
-import afl
 import random
 import uuid
 import shutil
