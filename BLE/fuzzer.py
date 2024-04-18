@@ -31,7 +31,7 @@ def main():
     while True:
         try:
             if first_iteration:
-                with open('test_input.txt', 'r') as f:
+                with open('files/test_input.txt', 'r') as f:
                     content = f.readlines()
                 subprocess.run(["python3", "run_ble_tester.py"], check=True)
                 first_iteration = False
