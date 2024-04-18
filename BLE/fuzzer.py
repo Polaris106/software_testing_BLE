@@ -31,13 +31,13 @@ def main():
     while True:
         try:
             if first_iteration:
-                subprocess.run("python3", "run_ble_tester.py", check=True)
+                subprocess.run(["python3", "run_ble_tester.py"], check=True)
                 first_iteration = False
             else:
                 subprocess.run(["./mutate", os.path.join(INPUT_DIR, "test_input.txt"),
                                os.path.join(OUTPUT_DIR, "test_input.txt")], check=True)
                 # take in mutate_output.txt as input
-                subprocess.run("python3", "run_ble_tester.py", check=True)
+                subprocess.run(["python3", "run_ble_tester.py"], check=True)
 
             # Check if the output file is empty
             output_file_path = os.path.join(OUTPUT_DIR, "test_output.txt")
