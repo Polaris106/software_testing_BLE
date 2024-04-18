@@ -39,8 +39,8 @@ def main():
                 first_iteration = False
             else:
                 subprocess.run(["./mutate", os.path.join(INPUT_DIR, "test_input.txt"),
-                               os.path.join(OUTPUT_DIR, "test_input.txt")], check=True)
-                with open('files/test_input.txt', 'r') as f:
+                               os.path.join(OUTPUT_DIR, "mutate_output.txt")], check=True)
+                with open('files/mutate_output.txt', 'r') as f:
                     lines = f.readlines()
                 length = len(lines)
                 # take in mutate_output.txt as input
