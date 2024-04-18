@@ -127,7 +127,7 @@ class TargetEventsListener(Device.Listener):
                 print(f"Could not convert '{numeric_string}' to integer.")
         input = int(int_line_reader[inputNum])
         print(int_line_reader)
-        print("input: " + input)
+        print("input: " + str(input))
         byte_array = bytearray(input)
 
         print('=== Read/Write Attributes (Handles)')
