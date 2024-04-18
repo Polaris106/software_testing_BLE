@@ -111,7 +111,7 @@ class TargetEventsListener(Device.Listener):
 
         # -------- Main interaction with the target here --------
 
-        filename = "test_input.txt"  # Predefined filename
+        filename = "files/test_input.txt"  # Predefined filename
         line_reader = read_lines_from_file(filename)
         inputNum = 1  # ARRAY LOCATION HERE, argument
 
