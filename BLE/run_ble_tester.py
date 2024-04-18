@@ -12,6 +12,7 @@ import random
 import uuid
 import shutil
 import time
+import random
 
 from binascii import hexlify
 
@@ -27,7 +28,6 @@ from bumble.colors import color
 
 
 # Get the input file name from command line arguments
-input_file = sys.argv[1]
 INPUT_DIR = "files"
 OUTPUT_DIR = "files"
 
@@ -113,7 +113,8 @@ class TargetEventsListener(Device.Listener):
 
         filename = "files/test_input.txt"  # Predefined filename
         line_reader = read_lines_from_file(filename)
-        inputNum = 1  # ARRAY LOCATION HERE, argument
+        # Choose a random element from line_reader
+        inputNum = random.choice(line_reader)
 
         # line_reader = ["2","5"] # TEST INPUT
 
