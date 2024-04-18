@@ -49,7 +49,7 @@ def main():
             output_file_path = os.path.join(OUTPUT_DIR, "test_output.txt")
             if os.stat(output_file_path).st_size == 0:
                 print("Output file is empty.")
-                # return
+                return
             else:
                 # Read the contents of the output file and print them
                 with open(output_file_path, "r") as output_file:
