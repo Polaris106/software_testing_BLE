@@ -123,7 +123,7 @@ class TargetEventsListener(Device.Listener):
 
         int_line_reader = [int(numeric_string)
                            for numeric_string in line_reader]
-
+        print(int_line_reader)
         input = int(int_line_reader[inputNum])
         byte_array = bytearray(input)
 
