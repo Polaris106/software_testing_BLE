@@ -118,7 +118,7 @@ class TargetEventsListener(Device.Listener):
             print(line)
         # Choose a random element from line_reader
         print("input_num: ", input_num)
-        inputNum = random.randint(0, input_num-1)
+        inputNum = random.randint(0, int(input_num-1))
 
         # line_reader = ["2","5"] # TEST INPUT
 
