@@ -33,7 +33,6 @@ def main():
             if first_iteration:
                 with open('files/test_input.txt', 'r') as f:
                     content = f.readlines()
-                    content = ' '.join(content)
                 subprocess.run(
                     ["python3", "run_ble_tester.py"] + content, check=True)
                 first_iteration = False
@@ -43,7 +42,6 @@ def main():
                 # take in mutate_output.txt as input
                 with open('files/test_input.txt', 'r') as f:
                     content = f.readlines()
-                    content = ' '.join(content)
                 subprocess.run(
                     ["python3", "run_ble_tester.py"] + content, check=True)
 
