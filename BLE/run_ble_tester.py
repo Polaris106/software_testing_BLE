@@ -126,7 +126,7 @@ class TargetEventsListener(Device.Listener):
             except ValueError:
                 print(f"Could not convert '{numeric_string}' to integer.")
         input = int(int_line_reader[inputNum])
-        print("int_line_reader: " + int_line_reader)
+        print(int_line_reader)
         print("input: " + input)
         byte_array = bytearray(input)
 
