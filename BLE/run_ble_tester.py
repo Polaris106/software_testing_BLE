@@ -114,6 +114,7 @@ class TargetEventsListener(Device.Listener):
 
         filename = "files/test_input.txt"  # Predefined filename
         line_reader = read_lines_from_file(filename)
+        print(line_reader)
         # Choose a random element from line_reader
         inputNum = int(input_num)
 
