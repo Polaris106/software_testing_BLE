@@ -153,7 +153,7 @@ class TargetEventsListener(Device.Listener):
         # wait for 6 seconds for program to finish writing lcov
         time.sleep(6)
 
-        subprocess.run(["python", "buckets.py", os.path.join(INPUT_DIR, "test_input.txt"),
+        subprocess.run(["python3", "buckets.py", os.path.join(INPUT_DIR, "test_input.txt"),
                         os.path.join(OUTPUT_DIR, "test_output.txt")], check=True)
 
         os._exit(0)
