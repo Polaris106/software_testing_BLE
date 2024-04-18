@@ -148,10 +148,9 @@ class TargetEventsListener(Device.Listener):
         p = subprocess.Popen(
             f"lcov --capture --directory ./ --output-file {outputfile} -q --rc lcov_branch_coverage=1", shell=True)
         p
+        # wait for program to finish writing lcov
+        p.wait()
         p.kill
-
-        # wait for 6 seconds for program to finish writing lcov
-        time.sleep(6)
 
         subprocess.run(["python3", "buckets.py", os.path.join(INPUT_DIR, "test_input.txt"),
                         os.path.join(OUTPUT_DIR, "test_output.txt")], check=True)
