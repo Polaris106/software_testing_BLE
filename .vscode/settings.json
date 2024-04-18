@@ -3,5 +3,8 @@
         "types.h": "c",
         "config.h": "c",
         "mutate.h": "c"
-    }
+    },
+    "python.analysis.extraPaths": [
+        "./BLE/bumble"
+    ]
 }
