@@ -28,6 +28,7 @@ from bumble.colors import color
 
 
 # Get the input file name from command line arguments
+input_num = sys.argv[1]
 INPUT_DIR = "files"
 OUTPUT_DIR = "files"
 
@@ -113,9 +114,8 @@ class TargetEventsListener(Device.Listener):
 
         filename = "files/test_input.txt"  # Predefined filename
         line_reader = read_lines_from_file(filename)
-        size = len(line_reader)
         # Choose a random element from line_reader
-        inputNum = random.randint(0, size-1)
+        inputNum = input_num
 
         # line_reader = ["2","5"] # TEST INPUT
 
