@@ -117,17 +117,11 @@ class TargetEventsListener(Device.Listener):
         for line in line_reader:
             print(line)
         # Choose a random element from line_reader
-        print("input_num: ", input_num)
-        inputNum = random.randint(0, int(input_num)-1)
-
+        inputNum = 1
         # line_reader = ["2","5"] # TEST INPUT
 
-        int_line_reader = []
-        for numeric_string in line_reader:
-            try:
-                int_line_reader.append(int(numeric_string.strip()))
-            except ValueError:
-                print(f"Could not convert '{numeric_string}' to integer.")
+        int_line_reader = [int(numeric_string)
+                           for numeric_string in line_reader]
         print(int_line_reader)
         input = int(int_line_reader[inputNum])
         print(input)

@@ -32,20 +32,17 @@ def main():
         try:
             if first_iteration:
                 with open('files/test_input.txt', 'r') as f:
-                    lines = f.readlines()
-                length = len(lines)
+                    content = f.readlines()
                 subprocess.run(
-                    ["python3", "run_ble_tester.py", str(length)], check=True)
+                    ["python3", "run_ble_tester.py"] + content, check=True)
                 first_iteration = False
             else:
                 subprocess.run(["./mutate", os.path.join(INPUT_DIR, "test_input.txt"),
                                os.path.join(OUTPUT_DIR, "mutate_output.txt")], check=True)
-                with open('files/mutate_output.txt', 'r') as f:
-                    lines = f.readlines()
-                length = len(lines)
-                # take in mutate_output.txt as input
+                with open('files/test_input.txt', 'r') as f:
+                    content = f.readlines()
                 subprocess.run(
-                    ["python3", "run_ble_tester.py", str(length)], check=True)
+                    ["python3", "run_ble_tester.py"] + content, check=True)
 
             # Check if the output file is empty
             output_file_path = os.path.join(OUTPUT_DIR, "test_output.txt")
