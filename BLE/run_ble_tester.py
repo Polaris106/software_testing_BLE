@@ -28,8 +28,8 @@ from bumble.colors import color
 
 # Get the input file name from command line arguments
 # input_file = sys.argv[1]
-INPUT_DIR = "/files"
-OUTPUT_DIR = "/files"
+INPUT_DIR = "files"
+OUTPUT_DIR = "files"
 
 p2 = subprocess.Popen(
     "GCOV_PREFIX=$(pwd) GCOV_PREFIX_STRIP=3 ./zephyr.exe --bt-dev=127.0.0.1:9000", shell=True)
