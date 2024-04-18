@@ -122,11 +122,13 @@ class TargetEventsListener(Device.Listener):
         # line_reader = ["2","5"] # TEST INPUT
 
         int_line_reader = []
-        for numeric_string in line_reader:
-            try:
-                int_line_reader.append(int(numeric_string.strip()))
-            except ValueError:
-                print(f"Could not convert '{numeric_string}' to integer.")
+        for line in line_reader:
+            numeric_strings = line.split(',')
+            for numeric_string in numeric_strings:
+                try:
+                    int_line_reader.append(int(numeric_string.strip()))
+                except ValueError:
+                    print(f"Could not convert '{numeric_string}' to integer.")
         input = int(int_line_reader[inputNum])
         print(int_line_reader)
         print("input: " + str(input))
