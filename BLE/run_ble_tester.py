@@ -27,7 +27,7 @@ from bumble.colors import color
 
 
 # Get the input file name from command line arguments
-input_file = sys.argv[1]
+# input_file = sys.argv[1]
 INPUT_DIR = "/files"
 OUTPUT_DIR = "/files"
 
@@ -113,7 +113,7 @@ class TargetEventsListener(Device.Listener):
 
         filename = "test_input.txt"  # Predefined filename
         line_reader = read_lines_from_file(filename)
-        inputNum = input_file  # ARRAY LOCATION HERE, argument
+        inputNum = 1  # ARRAY LOCATION HERE, argument
 
         # line_reader = ["2","5"] # TEST INPUT
 
