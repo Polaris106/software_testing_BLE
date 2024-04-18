@@ -114,17 +114,18 @@ class TargetEventsListener(Device.Listener):
 
         filename = "files/test_input.txt"  # Predefined filename
         line_reader = read_lines_from_file(filename)
-        for line in line_reader:
-            print(line)
         # Choose a random element from line_reader
-        inputNum = 1
+        inputNum = random.randint(0, int(input_num)-1)
+
         # line_reader = ["2","5"] # TEST INPUT
 
-        int_line_reader = [int(numeric_string)
-                           for numeric_string in line_reader]
-        print(int_line_reader)
+        int_line_reader = []
+        for numeric_string in line_reader:
+            try:
+                int_line_reader.append(int(numeric_string.strip()))
+            except ValueError:
+                print(f"Could not convert '{numeric_string}' to integer.")
         input = int(int_line_reader[inputNum])
-        print(input)
         byte_array = bytearray(input)
 
         print('=== Read/Write Attributes (Handles)')
